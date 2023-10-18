@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+
+        <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+
+        <title>Programando con JS</title>
+    </head>
+    <body>
+
+        <h1>Cálculo de letra de DNI</h1>
+        <form id="formulario">
+            <input id="dni" type="text">
+            <!-- <input id="enviar" type="submit"> -->
+            <button id="btnEnviar">Enviar</button>
+        </form>
+        
+        <!-- <script src="js/main.js"></script> -->
+
+        <script>
+
+            function calculaLetraDNI() {
+
+                let dni = document.getElementById('dni').value;
+
+                console.log(dni)
+                
+                let restoDNI = dni % 23;
+                let cadenaDNI = 'TRWAGMYFPDXBNJZSQVHLCKE';
+                var letraDNI = cadenaDNI.slice(restoDNI, restoDNI+1)
+
+                console.log(letraDNI)
+
+
+            }
+            
+            const btn = document.getElementById('btnEnviar');
+            btn.addEventListener("click", calculaLetraDNI());
+
+
+        </script>
+
+
+    </body>
+</html>

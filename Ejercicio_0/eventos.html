@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <header>
+        <h1>Hola Mundo</h1>
+        <h2>SubHeader</h2>
+    </header>
+
+    <script>
+        const header = document.querySelector("header");
+        
+        header.addEventListener("click", function (e) {
+            console.log("Has clickado en " + e.target.nodeName);
+        });
+
+        document.addEventListener("click", function (e) {
+            console.log("Has clickado en el documento");
+        });
+
+    </script>
+
+</body>
+</html>
+
