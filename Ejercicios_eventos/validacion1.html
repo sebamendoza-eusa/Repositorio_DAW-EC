@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+
+  <title>Eventos con JS</title>
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+</head>
+
+<body>
+
+  <header>
+    Informe de incidencia
+  </header>
+
+  <!-- <img src="assets/distribucion.jpg" id="imagen" /> -->
+
+  <form class="w3-container" action="#">
+
+    <label for="tipo" id="labelTipo">Tipo</label>
+    <select class="w3-select" name="tipo" id="tipo">
+      <option value="distribucion" selected>Distribución</option>
+      <option value="oficina" selected>Oficina</option>
+      <option value="produccion" selected>Producción</option>
+    </select>
+
+    <label for="serie" id="labelSerie">Nº de Serie</label>
+    <input class="w3-input" type="text" name="serie" id="serie">
+
+    <button class="w3-button" type="button" id="mostrarDescripcion">Mostrar descripción</button>
+
+    <div class="w3-hide" id="fDescripcion">
+      <label for="descripcion" id="labelDescripcion">Descripción</label>
+      <textarea class="w3-text" name="descripcion" id="descripcion" cols="30" rows="10"></textarea>
+    </div>
+
+    <div>
+      <button class="w3-button" type="submit" id="enviar">Enviar datos</button>
+    </div>
+
+    <div id="capaError">
+
+    </div>
+
+  </form>
+
+</body>
+
+
+
+<script src="js/validacion1.js"></script>
+</body>
+
+</html>
