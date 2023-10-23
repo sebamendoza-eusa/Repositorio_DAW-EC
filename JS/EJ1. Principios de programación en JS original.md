@@ -1,4 +1,4 @@
-# EJ1. Principios de programación en JS
+# U1. Principios de programación en JS
 
 # Ejercicios para practicar: Desarrollar los problemas propuestos
 
@@ -7,11 +7,11 @@
 - Crea una página web que pida al usuario un número a partir de un cuadro de lectura
 - Mediante un cuadro de mensaje indica al usuario si lo que escribió era un número o no
 
-## Fondo aleatorio
+## Ejercicio_3: Fondo aleatorio
 
 - Crea una página web que cambie aleatoriamente el color de fondo cada vez que entremos en ella o la recarguemos
 
-## Cálculo de salario
+## Ejercicio_4: Cálculo de salario
 
 - Crea una aplicación web que en obtenga del usuario los siguientes datos: nombre, apellidos, salario (con decimales), y la edad (número entero)
 - Vamos a suponer que el usuario introduce bien los datos y no los vamos a validar
@@ -39,7 +39,7 @@
 
 ## Validación formulario (1)
 
-- Realiza una página que muestre un formulario y verifique la entrada de un número que esté comprendido entre 1..100
+- Realiza una página que muestre un formulario y verifique la entrada de un número que esté comprendido entre 1..100.
 
 ## Imagen cambiante
 
@@ -49,13 +49,11 @@
 
 - Hacer una página que simule el lanzamiento de un dado.
 
+
+
 # Lectura y documentación de código
 
-- A continuación se tiene un script que realiza cierta función. Intentar delimitar la función del script a partir de su lectura
-- Testear el script y conseguir que se ejecute. NOTA IMPORTANTE: **Pueden existir errores que habrán de corregirse** para que el script se ejecute
-- Necesitarás editar el documento HTML correspondiente
-- Leer y documentar el código final usando los medios que veas oportunos. Prestar especial atención a la denominación de las variables para que el script sea más legible.
-- opcionalmente pueden añadirse las mejoras que se vean oportunas para mejorar la usabilidad del script.
+Leer y documentar el código usando los comen
 
 ```javascript
 main.js
@@ -71,7 +69,7 @@ do {
             v = false;
             n = prompt("¿Adivina el número");
             if (n == null) s = true;
-            else if (isNaN(num) || n < 0 || n > 1000) {
+            else if (isNaN(n) || n < 0 || n > 1000) {
                 alert("No válido");
                 v = true;
             }
