@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Proyecto canvas</title>
+        <link rel="stylesheet" href="assets/styles.css" />
+
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            .main-container {
+                background-color: rgb(113, 128, 212);
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            canvas {
+                background-color: #fff;
+            }
+        </style>
+    </head>
+    <body>
+        <main class="main-container">
+            <canvas id="main-canvas" width="900" height="900"></canvas>
+        </main>
+
+        <script>
+            //Guardar el elemento y el contexto
+            const mainCanvas = document.getElementById("main-canvas");
+            const context = mainCanvas.getContext("2d");
+
+            let initialX;
+            let initialY;
+            let correccionX = 0;
+            let correccionY = 0;
+
+            let posicion = mainCanvas.getBoundingClientRect();
+            correccionX = posicion.x;
+            correccionY = posicion.y;
+
+            const dibujar = (cursorX, cursorY) => {
+                context.beginPath();
+                context.moveTo(initialX, initialY);
+                context.lineWidth = 10;
+                context.strokeStyle = "#000";
+                context.lineCap = "round";
+                context.lineJoin = "round";
+                context.lineTo(cursorX, cursorY);
+                context.stroke();
+
+                initialX = cursorX;
+                initialY = cursorY;
+            };
+
+            const mouseDown = (evt) => {
+                evt.preventDefault();
+                if (evt.changedTouches === undefined) {
+                    initialX = evt.offsetX;
+                    initialY = evt.offsetY;
+                } else {
+                    //evita desfase al dibujar
+                    initialX = evt.changedTouches[0].pageX - correccionX;
+                    initialY = evt.changedTouches[0].pageY - correccionY;
+                }
+                dibujar(initialX, initialY);
+                mainCanvas.addEventListener("mousemove", mouseMoving);
+                mainCanvas.addEventListener("touchmove", mouseMoving);
+            };
+
+            const mouseMoving = (evt) => {
+                evt.preventDefault();
+                if (evt.changedTouches === undefined) {
+                    dibujar(evt.offsetX, evt.offsetY);
+                } else {
+                    dibujar(
+                        evt.changedTouches[0].pageX - correccionX,
+                        evt.changedTouches[0].pageY - correccionY
+                    );
+                }
+            };
+
+            const mouseUp = () => {
+                mainCanvas.removeEventListener("mousemove", mouseMoving);
+                mainCanvas.removeEventListener("touchmove", mouseMoving);
+            };
+
+            mainCanvas.addEventListener("mousedown", mouseDown);
+            mainCanvas.addEventListener("mouseup", mouseUp);
+
+            //pantallas tactiles
+            mainCanvas.addEventListener("touchstart", mouseDown);
+            mainCanvas.addEventListener("touchend", mouseUp);
+        </script>
+    </body>
+</html>

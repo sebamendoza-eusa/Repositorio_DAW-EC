@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Ejemplo de recorrido del del DOM de forma recursiva</title>
+    </head>
+    <body>
+        <h1>Esto es un encabezado</h1>
+        <p>Esto es un párrafo.</p>
+        <a href="#">Esto es un enlace</a>
+
+        <button>Esto es un botón</button>
+
+        <img src="img/imagen.png" alt="Descripción de la imagen" />
+
+        <table border="2">
+            <tr>
+                <th>Encabezado de tabla 1</th>
+                <th>Encabezado de tabla 2</th>
+            </tr>
+            <tr>
+                <td>Dato 1</td>
+                <td>Dato 2</td>
+            </tr>
+        </table>
+
+
+
+        <script>
+            // Recorrido recursivo de los elementos del DOM
+            function recorridoDOM(node) {
+                if (node.nodeType === Node.ELEMENT_NODE) {
+                    console.log(node.tagName);
+                    for (let i = 0; i < node.children.length; i++) {
+                        recorridoDOM(node.children[i]);
+                    }
+                }
+            }
+
+            // Manejo de eventos
+            document.addEventListener("click", function (e) {
+                alert("Se hizo clic en: " + e.target.tagName);
+            });
+
+            // Llamada inicial a la función de recorrido recursivo
+            recorridoDOM(document.documentElement);
+        </script>
+
+        
+    </body>
+</html>

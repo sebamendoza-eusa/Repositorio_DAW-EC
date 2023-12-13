@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Ejemplo de recorrido del del DOM de forma recursiva</title>
+    </head>
+
+    <body>
+        <div id="tabla"></div>
+
+        <script>
+            function genera_tabla() {
+                // Obtener la referencia del elemento div
+                const divTabla = document.getElementById("tabla");
+
+                // Crea un elemento <table> y un elemento <tbody>
+                const tabla = document.createElement("table");
+                const tblBody = document.createElement("tbody");
+
+                const nFilas = 5;
+                const nCols = 3;
+
+                // Crea las celdas
+                for (let i = 0; i < nFilas; i++) {
+                    // Crea las hileras de la tabla
+                    let fila = document.createElement("tr");
+
+                    for (let j = 0; j < nCols; j++) {
+                        // Crea un elemento <td> y un nodo de texto, haz que el nodo de
+                        // texto sea el contenido de <td>, ubica el elemento <td> al final
+                        // de la hilera de la tabla
+                        let celda = document.createElement("td");
+                        let textoCelda = document.createTextNode(
+                            `Celda en fila ${i}, columna ${j}`
+                        );
+                        celda.appendChild(textoCelda);
+                        fila.appendChild(celda);
+                    }
+
+                    // agrega la hilera al final de la tabla (al final del elemento tblbody)
+                    tblBody.appendChild(fila);
+                }
+
+                // posiciona el <tbody> debajo del elemento <table>
+                tabla.appendChild(tblBody);
+                // appends <table> into <body>
+                divTabla.appendChild(tabla);
+                // modifica el atributo "border" de la tabla y lo fija a "2";
+                tabla.setAttribute("border", "2");
+            }
+
+            genera_tabla();
+        </script>
+        
+    </body>
+</html>

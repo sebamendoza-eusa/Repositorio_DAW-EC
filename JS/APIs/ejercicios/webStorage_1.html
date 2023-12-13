@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Probando local storage</title>
+
+    </head>
+    <body>
+        <form>
+            <label for="nombre">Nombre: </label>
+            <input type="text" id="nombre" />
+            <label for="apellidos">Apellidos:</label>
+            <input type="text" id="apellidos" />
+            <label for="tel">Num favorito: </label>
+            <input type="text" id="tel" />
+            <button id="guardar">Guardar</button>
+            <button id="mostrar">Mostrar</button>
+            <button id="delete">Borrar datos</button>
+        </form>
+
+        <script>
+            var nom = document.getElementById("nombre"),
+                ape = document.getElementById("apellidos"),
+                boton = document.getElementById("guardar"),
+                borrar = document.getElementById("delete"),
+                mostrar = document.getElementById("mostrar"),
+                pho = document.getElementById("tel");
+
+            function guardar() {
+                if (nom.value != "" && ape.value != "" && pho.value != "") {
+                    localStorage.nombre = nom.value;
+                    localStorage["apellido"] = ape.value;
+                    localStorage.setItem("tel", pho.value);
+                } else {
+                    alert("LLena toodos los datos");
+                }
+            }
+
+            function del() {
+                if (localStorage.length != 0) {
+                    for (var iterador in localStorage) {
+                        console.log(localStorage[iterador]);
+                        localStorage.removeItem(iterador);
+                    }
+                } else {
+                    alert("NO hay datos en localStorage");
+                }
+            }
+            boton.addEventListener("click", guardar);
+
+            mostrar.addEventListener("click", function () {
+                if (localStorage.length != 0) {
+                    alert(
+                        localStorage.nombre +
+                            "\n" +
+                            localStorage.apellido +
+                            "\n" +
+                            localStorage.tel
+                    );
+                } else {
+                    alert("NO hay datos en localStorage");
+                }
+            });
+
+            borrar.addEventListener("click", del);
+        </script>
+    </body>
+</html>
